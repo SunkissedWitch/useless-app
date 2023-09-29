@@ -1,6 +1,6 @@
 export default function Sidebar () {
   return (
-    <div className='flex flex-col w-60 bg-slate-100 h-full px-4 py-10'>
+    <div className='flex fixed flex-col shrink-0 w-52 border-r h-screen px-4 bg-base-100 py-4'>
       Sidebar
     </div>
   )

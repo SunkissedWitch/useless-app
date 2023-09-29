@@ -1,18 +1,30 @@
 import { NavLink } from 'react-router-dom'
 
-export default function NavBar({ routes }) {
+export default function NavBar() {
+  const watched = localStorage.getItem('watched')
+  const routes = [
+    {
+      link: `/watch`,
+      title: 'Watch',
+      badge: watched || '5'
+    },
+  ]
+
   return (
-    <div className='navbar bg-base-100'>
-      <div className='flex-1'>
+    <div className='navbar fixed z-10 bg-base-100'>
+      <div className='block w-52'>
         <a className='btn btn-ghost normal-case text-xl' href='/'>Shopka</a>
       </div>
-      <div className='flex-none gap-2'>
-        <div className='form-control'>
-          <input type='text' placeholder='Search' className='input input-secondary rounded-full w-24 md:w-auto' />
+      <div className='flex grow gap-2'>
+        <div className='form-control me-auto'>
+          <input type='text' placeholder='Search' className='input input-secondary input-sm rounded-full bg-slate-200 border-none w-24 md:w-auto md:min-w-[450px]' />
         </div>
         <div className='px-2'>
           {routes.map(route => (
-            <NavLink key={route.link} to={route.link} className='btn btn-primary btn-outline'>{route.title}</NavLink>
+            <div key={route.link} className='indicator'>
+              {route?.badge && <span className='indicator-item badge badge-error text-xs leading-none px-1 py-1 font-medium'>{route.badge}</span>}
+              <NavLink to={route.link} className='btn btn-primary rounded btn-outline btn-sm px-4 capitalize border-2 border-primary border-opacity-40'>{route.title}</NavLink>
+            </div>
           ))}
         </div>
         <div className='dropdown dropdown-end'>

@@ -1,10 +1,13 @@
 const express = require('express')
 const { PrismaClient } = require('@prisma/client')
+const cors = require('cors')
 
 const prisma = new PrismaClient()
 const app = express()
 
+app.use(cors())
 app.use(express.json())
+
 
 // app.post(`/signup`, async (req, res) => {
 //   const { name, email, posts } = req.body
