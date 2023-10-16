@@ -25,7 +25,7 @@ export default function Products() {
   console.log('products', products)
   return (
     <ProductsLayout>
-      <div className='grid grid-cols-4 gap-2 px-2'>
+      <div className='mx-auto gap-3 px-2 max-w-5xl flex flex-wrap justify-start'>
         {products?.map(product => (
           <ProductCard key={product.id} data={product} />
         ))}

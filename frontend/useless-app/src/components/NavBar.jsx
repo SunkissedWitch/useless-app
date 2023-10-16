@@ -1,12 +1,14 @@
 import { NavLink } from 'react-router-dom'
+import { useContext } from 'react'
+import { WatchedContext } from '../routes/root'
 
 export default function NavBar() {
-  const watched = localStorage.getItem('watched')
+  const { watched } = useContext(WatchedContext)
   const routes = [
     {
       link: `/watch`,
       title: 'Watch',
-      badge: watched || '5'
+      badge: watched?.length || null
     },
   ]
 
@@ -22,7 +24,7 @@ export default function NavBar() {
         <div className='px-2'>
           {routes.map(route => (
             <div key={route.link} className='indicator'>
-              {route?.badge && <span className='indicator-item badge badge-error text-xs leading-none px-1 py-1 font-medium'>{route.badge}</span>}
+              {route?.badge && <span className='indicator-item badge badge-error text-xs leading-none px-1 py-1 font-medium min-w-[1.25rem]'>{route.badge}</span>}
               <NavLink to={route.link} className='btn btn-primary rounded btn-outline btn-sm px-4 capitalize border-2 border-primary border-opacity-40'>{route.title}</NavLink>
             </div>
           ))}
