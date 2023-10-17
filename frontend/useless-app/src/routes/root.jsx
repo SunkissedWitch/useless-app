@@ -7,6 +7,8 @@ export const WatchedContext = createContext()
 
 export default function Root() {
   const [watched, setWatched] = useState(JSON?.parse(localStorage?.getItem(WATCH_LIST_KEY)) || null)
+
+  // The search bar on top will filter the items by these values: Name, rate/review, price, and description.
   return (
     <div className='flex flex-col min-h-screen'>
       <WatchedContext.Provider value={{ watched, setWatched }}>

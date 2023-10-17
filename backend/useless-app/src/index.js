@@ -92,10 +92,10 @@ app.use(express.json())
 //   res.json(post)
 // })
 
-app.get('/products', async (req, res) => {
-  const products = await prisma.product.findMany()
-  res.json(products)
-})
+// app.get('/products', async (req, res) => {
+//   const products = await prisma.product.findMany()
+//   res.json(products)
+// })
 
 // app.get('/user/:id/drafts', async (req, res) => {
 //   const { id } = req.params
@@ -149,6 +149,35 @@ app.get(`/product/:id`, async (req, res) => {
 
 //   res.json(posts)
 // })
+
+app.get('/products', async (req, res) => {
+  const { searchString, skip, take, orderBy } = req.query
+
+  const or = searchString
+    ? {
+        OR: [
+          { name: { contains: searchString } },
+          { rate: { equals: Number(searchString) } },
+          { price: { equals: Number(searchString) } },
+          { description: { contains: searchString } },
+        ],
+      }
+    : {};
+  console.log('or', or)
+
+  const products = await prisma.product.findMany({
+    where: {
+      ...or,
+    },
+    take: Number(take) || undefined,
+    skip: Number(skip) || undefined,
+    orderBy: {
+      updatedAt: orderBy || undefined,
+    },
+  })
+
+  res.json(products)
+})
 
 const server = app.listen(8081, () =>
   console.log(`
