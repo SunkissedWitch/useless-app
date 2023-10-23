@@ -1,6 +1,7 @@
 import { NavLink } from 'react-router-dom'
 import { useContext } from 'react'
 import { WatchedContext } from '../routes/root'
+import { Search } from './Search'
 
 export default function NavBar() {
   const { watched } = useContext(WatchedContext)
@@ -19,7 +20,7 @@ export default function NavBar() {
       </div>
       <div className='flex grow gap-2'>
         <div className='form-control me-auto'>
-          <input type='text' placeholder='Search' className='input input-secondary input-sm rounded-full bg-slate-200 border-none w-24 md:w-auto md:min-w-[450px]' />
+          <Search />
         </div>
         <div className='px-2'>
           {routes.map(route => (
