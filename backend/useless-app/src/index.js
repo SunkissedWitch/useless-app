@@ -25,6 +25,7 @@ app.get(`/products/:id`, async (req, res) => {
 
 app.get('/products', async (req, res) => {
   const { searchString, skip, take, orderBy } = req.query
+  console.log('[orderBy]', orderBy)
 
   const or = searchString
     ? {
