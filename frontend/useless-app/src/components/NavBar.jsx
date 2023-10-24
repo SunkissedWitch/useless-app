@@ -1,10 +1,11 @@
-import { NavLink } from 'react-router-dom'
+import { NavLink, useLocation } from 'react-router-dom'
 import { useContext } from 'react'
 import { WatchedContext } from '../routes/root'
 import { Search } from './Search'
 
 export default function NavBar() {
   const { watched } = useContext(WatchedContext)
+  const { pathname } = useLocation()
   const routes = [
     {
       link: `/watch`,
@@ -20,7 +21,7 @@ export default function NavBar() {
       </div>
       <div className='flex grow gap-2'>
         <div className='form-control me-auto'>
-          <Search />
+        {pathname === '/' && <Search />}
         </div>
         <div className='px-2'>
           {routes.map(route => (

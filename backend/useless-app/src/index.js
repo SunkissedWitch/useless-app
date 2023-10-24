@@ -24,8 +24,15 @@ app.get(`/products/:id`, async (req, res) => {
 })
 
 app.get('/products', async (req, res) => {
-  const { searchString, skip, take, orderBy } = req.query
-  console.log('[orderBy]', orderBy)
+  const { searchString, skip, take, orderBy, sortBy } = req.query
+  console.log('[sortBy]', sortBy)
+
+  const sortByVariants = {
+    cheapest: { price: 'asc' },
+    expensive: { price: 'desc' },
+    rated: { rate: 'desc' } ,
+  }
+  const sort = sortBy ? sortByVariants?.[sortBy] : undefined
 
   const or = searchString
     ? {
@@ -45,7 +52,8 @@ app.get('/products', async (req, res) => {
         take: Number(take) || undefined,
         skip: Number(skip) || undefined,
         orderBy: {
-          name: orderBy || undefined,
+          ...sort,
+          // name: orderBy || undefined,
         },
       })
     

@@ -7,10 +7,11 @@ export const Search = () => {
       searchString: ''
     }
   })
-  const [_searchParams, setSearchParams] = useSearchParams()
+  const [searchParams, setSearchParams] = useSearchParams()
 
-  const onSubmit = (data) => {
-    setSearchParams(data)
+  const onSubmit = ({ searchString }) => {
+    searchParams.set('searchString', searchString)
+    setSearchParams(searchParams)
   }
 
   return (
