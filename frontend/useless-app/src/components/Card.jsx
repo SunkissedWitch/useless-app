@@ -1,7 +1,7 @@
-import { useContext } from "react"
-import { Rating } from "./Rating"
+import { useContext } from 'react'
+import { Rating } from './Rating'
 import { find, isEmpty, isEqual, matchesProperty, reject, uniqWith } from 'lodash'
-import { WatchedContext } from "../routes/root"
+import { WatchedContext } from '../routes/root'
 
 export const WATCH_LIST_KEY = 'watch_list'
 
@@ -44,7 +44,7 @@ export default function ProductCard({ data }) {
         </div>
         <button type='button' className={`btn btn-sm rounded px-4 btn-outline btn-primary capitalize border-2 border-primary border-opacity-40 min-w-[90px] ${!alreadyWatched ? 'btn-active' : ''}`} onClick={handleClick}>
           {!alreadyWatched ? 'Unwatch' : <>
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 -m-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>
+            <svg xmlns='http://www.w3.org/2000/svg' className='h-4 w-4 -m-1' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path strokeLinecap='round' strokeLinejoin='round' strokeWidth='2' d='M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z' /></svg>
             Watch
           </>}
         </button>

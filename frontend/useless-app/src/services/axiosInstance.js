@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from 'axios'
 
 const localURL = 'http://localhost:8081/'
 const prodURL = 'https://api.production.url.com/'

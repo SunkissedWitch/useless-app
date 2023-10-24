@@ -1,12 +1,12 @@
-import Sidebar from "../components/Sidebar";
+import Sidebar from '../components/Sidebar'
 import useSWR from 'swr'
 import { fetcher } from '../services/fetcher.js'
-import { Loader } from "../components/Loader";
-import { ErrorResponse } from "../components/ErrorResponse";
-import ProductCard from "../components/Card";
-import { useLocation } from "react-router-dom";
-import { NoData } from "../components/NoData";
-import { SortBy } from "../components/SortBy";
+import { Loader } from '../components/Loader'
+import { ErrorResponse } from '../components/ErrorResponse'
+import ProductCard from '../components/Card'
+import { useLocation } from 'react-router-dom'
+import { NoData } from '../components/NoData'
+import { SortBy } from '../components/SortBy'
 
 const ProductsLayout = ({ children }) => (
   <>
