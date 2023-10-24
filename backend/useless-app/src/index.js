@@ -24,8 +24,7 @@ app.get(`/products/:id`, async (req, res) => {
 })
 
 app.get('/products', async (req, res) => {
-  const { searchString, skip, take, orderBy, sortBy } = req.query
-  console.log('[sortBy]', sortBy)
+  const { searchString, skip, take, sortBy } = req.query
 
   const sortByVariants = {
     cheapest: { price: 'asc' },
@@ -53,7 +52,6 @@ app.get('/products', async (req, res) => {
         skip: Number(skip) || undefined,
         orderBy: {
           ...sort,
-          // name: orderBy || undefined,
         },
       })
     

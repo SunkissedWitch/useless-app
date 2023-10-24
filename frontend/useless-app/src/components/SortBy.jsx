@@ -16,7 +16,7 @@ export const SortBy = ({ sortVariants }) => {
       <label className='label label-text'>Sort by:</label>
       <select className='select select-bordered' name='selectSortByOrder' onChange={handleChange} defaultValue={order}>
         {sortVariants.map(sort => (
-          <option disabled={sort.label === 'The most useless'} key={sort.key} value={sort.key}>{sort.label}</option>
+          <option key={sort.key} value={sort.key}>{sort.label}</option>
         ))}
       </select>
     </div>
